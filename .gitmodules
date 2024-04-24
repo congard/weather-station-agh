@@ -1,0 +1,9 @@
+[submodule "components/esp-idf-ssd1306"]
+	path = components/esp-idf-ssd1306
+	url = https://github.com/nopnop2002/esp-idf-ssd1306
+[submodule "components/am2302_rmt"]
+	path = components/am2302_rmt
+	url = https://github.com/suda-morris/am2302_rmt.git
+[submodule "components/expressif"]
+	path = components/expressif
+	url = https://github.com/congard/expressif.git
