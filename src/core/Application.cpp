@@ -1,0 +1,35 @@
+#include <freertos/FreeRTOS.h>
+
+#include "Application.h"
+
+Application::Application()
+    : m_display(*this) {}
+
+DHT22Sensor& Application::getDHT22Sensor() {
+    return m_dht22Sensor;
+}
+
+void Application::exec() {
+    m_dht22Sensor.run();
+    m_display.run();
+
+    constexpr auto sleepSeconds = 10;
+    uint64_t timeSeconds = 0;
+
+    while (true) {
+        printf("uptime: %llum %llus\n", timeSeconds / 60, timeSeconds % 60);
+        timeSeconds += sleepSeconds;
+        vTaskDelay(pdMS_TO_TICKS(sleepSeconds * 1000));
+    }
+}
+
+void Application::setTime(time_t seconds) {
+    timeval now {.tv_sec = seconds};
+    settimeofday(&now, nullptr);
+}
+
+time_t Application::getTime() {
+    time_t result;
+    time(&result);
+    return result;
+}
