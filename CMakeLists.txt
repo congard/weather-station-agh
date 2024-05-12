@@ -17,7 +17,8 @@ message(STATUS "EXPRESSIF_PATH: ${EXPRESSIF_PATH}")
 list(APPEND EXTRA_COMPONENT_DIRS
         "${EXPRESSIF_PATH}/components"
         "components/esp-idf-ssd1306/components"
-        "components/am2302_rmt")
+        "components/am2302_rmt"
+        "components/tulz-observer")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
