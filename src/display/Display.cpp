@@ -1,5 +1,6 @@
 #include "Display.h"
 #include "renderer/DefaultDisplayRenderer.h"
+#include "renderer/BigDisplayRenderer.h"
 
 #include <esp_log.h>
 
@@ -70,7 +71,7 @@ void Display::onRun() {
     initDriver();
 
     if (m_renderer == nullptr)
-        m_renderer = std::make_unique<DefaultDisplayRenderer>(*this);
+        m_renderer = std::make_unique<BigDisplayRenderer>(*this);
 
     constexpr auto updateDelay = 1000;
 
