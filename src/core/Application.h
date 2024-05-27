@@ -3,6 +3,7 @@
 
 #include "sensor/DHT22Sensor.h"
 #include "display/Display.h"
+#include "HTModule.h"
 
 class Application {
 public:
@@ -23,7 +24,7 @@ public:
     static void sleep(int ms);
 
 private:
-    DHT22Sensor m_dht22Sensor;
+    HTModule m_htModule;
     Display m_display;
 };
 

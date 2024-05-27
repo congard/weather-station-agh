@@ -6,11 +6,11 @@ Application::Application()
     : m_display(*this) {}
 
 DHT22Sensor& Application::getDHT22Sensor() {
-    return m_dht22Sensor;
+    return m_htModule.getSensor();
 }
 
 void Application::exec() {
-    m_dht22Sensor.run();
+    m_htModule.run();
     m_display.run();
 
     constexpr auto sleepSeconds = 10;
