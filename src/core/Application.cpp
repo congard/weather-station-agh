@@ -19,7 +19,7 @@ void Application::exec() {
     while (true) {
         printf("uptime: %llum %llus\n", timeSeconds / 60, timeSeconds % 60);
         timeSeconds += sleepSeconds;
-        vTaskDelay(pdMS_TO_TICKS(sleepSeconds * 1000));
+        sleep(sleepSeconds * 1000);
     }
 }
 
@@ -32,4 +32,12 @@ time_t Application::getTime() {
     time_t result;
     time(&result);
     return result;
+}
+
+uint64_t Application::getUptime() {
+    return pdTICKS_TO_MS(xTaskGetTickCount());
+}
+
+void Application::sleep(int ms) {
+    vTaskDelay(pdMS_TO_TICKS(ms));
 }

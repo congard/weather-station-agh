@@ -15,6 +15,13 @@ public:
     static void setTime(time_t seconds);
     static time_t getTime();
 
+    /**
+     * @return The uptime, in ms.
+     */
+    static uint64_t getUptime();
+
+    static void sleep(int ms);
+
 private:
     DHT22Sensor m_dht22Sensor;
     Display m_display;
