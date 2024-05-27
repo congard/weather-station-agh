@@ -7,6 +7,6 @@
 [submodule "components/expressif"]
 	path = components/expressif
 	url = https://github.com/congard/expressif.git
-[submodule "components/tulz-observer/tulz"]
-	path = components/tulz-observer/tulz
+[submodule "components/tulz-iot/tulz"]
+	path = components/tulz-iot/tulz
 	url = https://github.com/congard/tulz.git

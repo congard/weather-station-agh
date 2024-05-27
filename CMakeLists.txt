@@ -18,7 +18,7 @@ list(APPEND EXTRA_COMPONENT_DIRS
         "${EXPRESSIF_PATH}/components"
         "components/esp-idf-ssd1306/components"
         "components/am2302_rmt"
-        "components/tulz-observer")
+        "components/tulz-iot")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
