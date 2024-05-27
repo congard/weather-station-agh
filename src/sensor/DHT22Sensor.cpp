@@ -1,12 +1,9 @@
 #include "DHT22Sensor.h"
 
 #include <am2302_rmt.h>
-#include <limits>
 #include <esp_log.h>
 
 #define TAG "DHT22Sensor"
-
-constexpr auto inf32 = std::numeric_limits<float>::infinity();
 
 // according to the datasheet, the sensing period
 // is equal to approx. 2 seconds
@@ -15,8 +12,8 @@ constexpr int minUpdateFreq = 2000;
 
 DHT22Sensor::DHT22Sensor()
     : m_updateFreq(minUpdateFreq),
-      m_celsius(inf32),
-      m_humidity(inf32) {}
+      m_celsius(None),
+      m_humidity(None) {}
 
 void DHT22Sensor::setUpdateFrequency(int ms) {
     m_updateFreq = std::max(ms, minUpdateFreq);

@@ -7,10 +7,14 @@
 
 #include <tulz/observer/Subject.h>
 #include <atomic>
+#include <limits>
 
 class DHT22Sensor : public TemperatureSensor, public HumiditySensor, public Runner {
     // isTempChanged, isHumidityChanged
     using UpdateSubject_t = tulz::Subject<bool, bool>;
+
+public:
+    constexpr static auto None {std::numeric_limits<float>::infinity()};
 
 public:
     DHT22Sensor();
