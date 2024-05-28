@@ -9,6 +9,10 @@ DHT22Sensor& Application::getDHT22Sensor() {
     return m_htModule.getSensor();
 }
 
+NetworkManager& Application::getNetworkManager() {
+    return m_network;
+}
+
 void Application::exec() {
     m_htModule.run();
     m_display.run();
