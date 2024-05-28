@@ -2,10 +2,11 @@
 #define WEATHERSTATION_DISPLAYRENDERER_H
 
 #include <string>
+#include <tulz/util/noncopyable.h>
 
 class Display;
 
-class DisplayRenderer {
+class DisplayRenderer : tulz::noncopyable {
 public:
     explicit DisplayRenderer(Display &display);
     virtual ~DisplayRenderer() = default;

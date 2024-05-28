@@ -7,7 +7,7 @@
 #include "rest/RESTModule.h"
 #include "HTModule.h"
 
-class Application {
+class Application : tulz::noncopyable {
 public:
     Application();
 

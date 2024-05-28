@@ -6,21 +6,16 @@
 
 #include <ssd1306.h>
 #include <memory>
+#include <tulz/util/noncopyable.h>
 
 class Application;
 
-class Display : public Runner {
+class Display : public Runner, tulz::noncopyable {
 public:
     using DisplayRendererPtr = std::unique_ptr<DisplayRenderer>;
 
 public:
     explicit Display(Application &application);
-
-    Display(const Display&) = delete;
-    Display(Display&&) = delete;
-
-    Display& operator=(const Display&) = delete;
-    Display& operator=(Display&&) = delete;
 
     void setRenderer(DisplayRendererPtr renderer);
     DisplayRenderer* getRenderer() const;
