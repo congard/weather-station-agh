@@ -17,7 +17,19 @@ void Application::exec() {
     uint64_t timeSeconds = 0;
 
     while (true) {
-        printf("uptime: %llum %llus\n", timeSeconds / 60, timeSeconds % 60);
+        // Based on
+        // https://github.com/espressif/arduino-esp32/blob/6bfcd6d9a9a7ecd07d656a7a88673c93e7d4d537/cores/esp32/Esp.cpp#L132
+        // Note esp_get_free_heap_size is equivalent to xPortGetFreeHeapSize and is equivalent to
+        // heap_caps_get_free_size(MALLOC_CAP_DEFAULT)
+        auto freeHeap = heap_caps_get_free_size(MALLOC_CAP_INTERNAL);
+        auto totalHeap = heap_caps_get_total_size(MALLOC_CAP_INTERNAL);
+        auto usedHeap = totalHeap - freeHeap;
+        auto usedPercentage = static_cast<float>(usedHeap) / static_cast<float>(totalHeap) * 100.0f;
+
+        printf("uptime: %llum %llus, heap usage: %i/%i (%.2f %%)\n",
+               timeSeconds / 60, timeSeconds % 60,
+               usedHeap, totalHeap, usedPercentage);
+
         timeSeconds += sleepSeconds;
         sleep(sleepSeconds * 1000);
     }
