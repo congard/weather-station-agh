@@ -4,6 +4,7 @@
 #include "sensor/DHT22Sensor.h"
 #include "display/Display.h"
 #include "network/NetworkManager.h"
+#include "rest/RESTModule.h"
 #include "HTModule.h"
 
 class Application {
@@ -29,6 +30,7 @@ private:
     HTModule m_htModule;
     Display m_display;
     NetworkManager m_network;
+    RESTModule m_restModule;
 };
 
 #endif //WEATHERSTATION_APPLICATION_H

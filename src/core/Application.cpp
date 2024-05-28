@@ -3,7 +3,8 @@
 #include "Application.h"
 
 Application::Application()
-    : m_display(*this) {}
+    : m_display(*this),
+      m_restModule(*this) {}
 
 DHT22Sensor& Application::getDHT22Sensor() {
     return m_htModule.getSensor();
@@ -14,6 +15,13 @@ NetworkManager& Application::getNetworkManager() {
 }
 
 void Application::exec() {
+    m_restModule.run();
+
+    // the order is important: network must be
+    // started after the RESTModule because of
+    // callbacks
+    m_network.run();
+
     m_htModule.run();
     m_display.run();
 
