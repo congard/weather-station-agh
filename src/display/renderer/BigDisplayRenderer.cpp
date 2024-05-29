@@ -32,7 +32,8 @@ void BigDisplayRenderer::render() {
         );
     };
     constexpr int display_width = 128;
-    constexpr int w_f4 = 8 * 8; // 'xx:xx:xx'
+    constexpr int w_f4 = 4 * 8; // 'xx:xx:xx'
+    constexpr int w_f4_date = 4 * 10; //xx.xx.xxxx
     constexpr int h_f4 = 4;
     uint8_t buffer_f4[BitmapRenderer::getBufferSize(w_f4, h_f4)] = {0};
     BitmapRenderer renderer_f4 {BitmapView {buffer_f4, w_f4, h_f4}};
@@ -46,10 +47,14 @@ void BigDisplayRenderer::render() {
     showBitmap_f4(display_width / 2 - w_f4 / 2, 0);
 
     // date
-    std::memset(buffer_f4, 0, sizeof(buffer_f4));
+    uint8_t buffer_f4_date[BitmapRenderer::getBufferSize(w_f4_date, h_f4)] = {0};
+    BitmapRenderer renderer_f4_date {BitmapView {buffer_f4_date, w_f4_date, h_f4}};
+    auto showBitmap_f4_date = [this, &renderer_f4_date](int x, int y) {
+        ssd1306_bitmaps(&m_display.getDev(), x, y, renderer_f4_date.data(), renderer_f4_date.width(), renderer_f4_date.height(), false);
+    };
     sprintf(strBuff, "%02i.%02i.%i", timeInfo->tm_mday, timeInfo->tm_mon + 1, timeInfo->tm_year + 1900);
-    renderer_f4.drawText(strBuff, 0, 0, font_4);
-    showBitmap_f4(display_width / 2 - w_f4 / 2, 6);
+    renderer_f4_date.drawText(strBuff, 0, 0, font_4);
+    showBitmap_f4_date(display_width / 2 - w_f4_date / 2, 6);
 
     if (m_tempRefreshRequired || m_humidityRefreshRequired) {
         constexpr int w = 24 * 5; // 'xx.xC', 'xx.x%'
