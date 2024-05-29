@@ -52,6 +52,7 @@ for x in ttf["cmap"].tables:
             subprocess.call(
                 ["convert", "-font", TTF_PATH, "-pointsize", FONT_SIZE, "-background", "white", "label:@" + input_txt,
                  output_png])
+
             hex_sequence = image_to_hex_sequence(output_png, int(FONT_SIZE))
             for num in hex_sequence:
                 print(hex(num), ", ", end="")
