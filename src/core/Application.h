@@ -1,6 +1,7 @@
 #ifndef WEATHERSTATION_APPLICATION_H
 #define WEATHERSTATION_APPLICATION_H
 
+#include "partition/PartitionManager.h"
 #include "sensor/DHT22Sensor.h"
 #include "display/Display.h"
 #include "network/NetworkManager.h"
@@ -33,6 +34,7 @@ public:
     static void sleep(int ms);
 
 private:
+    ws::PartitionManager m_partitionManager;
     HTModule m_htModule;
     Display m_display;
     NetworkManager m_network;

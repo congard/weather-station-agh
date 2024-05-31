@@ -19,6 +19,8 @@ Display& Application::getDisplay() {
 }
 
 void Application::exec() {
+    m_partitionManager.mount();
+
     m_restModule.run();
 
     // the order is important: network must be
