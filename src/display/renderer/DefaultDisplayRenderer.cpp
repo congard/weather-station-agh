@@ -5,6 +5,7 @@
 #include "../bitmap/Font16x16.h"
 #include "core/Application.h"
 
+namespace ws {
 DefaultDisplayRenderer::DefaultDisplayRenderer(Display &parent)
     : DisplayRenderer(parent),
       m_tempRefreshRequired(true),
@@ -66,4 +67,5 @@ void DefaultDisplayRenderer::render() {
             m_humidityRefreshRequired = false;
         }
     }
+}
 }

@@ -8,6 +8,7 @@
 #include <tulz/container/RingBuffer.h>
 #include <mutex>
 
+namespace ws {
 /**
  * Stands for Humidity Temperature Recorder
  */
@@ -45,5 +46,6 @@ private:
     // writing occurs
     mutable std::mutex m_mutex;
 };
+}
 
 #endif //WEATHERSTATION_HTRECORDER_H

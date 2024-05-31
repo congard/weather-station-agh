@@ -4,6 +4,7 @@
 #include <expressif/wifi/WiFi.h>
 #include <tulz/util/noncopyable.h>
 
+namespace ws {
 class NetworkManager : tulz::noncopyable {
     using Wifi = expressif::wifi::WiFi;
 
@@ -21,5 +22,6 @@ public:
 private:
     Wifi *m_wifi;
 };
+}
 
 #endif //WEATHERSTATION_NETWORKMANAGER_H

@@ -6,6 +6,7 @@
 
 #include <string_view>
 
+namespace ws {
 namespace detail {
 using Mask = uint8_t;
 using DoubleMask = uint16_t;
@@ -67,5 +68,6 @@ private:
 private:
     BitmapView m_base;
 };
+}
 
 #endif //WEATHERSTATION_BITMAPRENDERER_H

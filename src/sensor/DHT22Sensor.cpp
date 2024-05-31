@@ -5,6 +5,7 @@
 
 #define TAG "DHT22Sensor"
 
+namespace ws {
 DHT22Sensor::DHT22Sensor()
     : m_updateFreq(MinUpdateFreq),
       m_celsius(None),
@@ -69,4 +70,5 @@ void DHT22Sensor::onRun() {
             m_onUpdate.notify(isTempChanged, isHumidityChanged);
         }
     }
+}
 }

@@ -9,6 +9,7 @@
 
 LOG_TAG("WWWComponent");
 
+namespace ws {
 WWWComponent::WWWComponent() = default;
 
 void WWWComponent::enableFor(RESTServer &server) {
@@ -37,7 +38,9 @@ void WWWComponent::get(Request &req) {
     if (path.empty())
         path = "index.html";
 
-    if (std::ifstream file(ws::Partition::absolute(ws::WWWPartition::MountPoint, path)); file.is_open()) {
+    path = Partition::absolute(WWWPartition::MountPoint, path);
+
+    if (std::ifstream file(path); file.is_open()) {
         auto ext = std::string_view {path}.substr(path.find_last_of('.') + 1);
         auto type = getTypeByExt(ext);
 
@@ -56,4 +59,5 @@ void WWWComponent::get(Request &req) {
     } else {
         req.response().error404();
     }
+}
 }

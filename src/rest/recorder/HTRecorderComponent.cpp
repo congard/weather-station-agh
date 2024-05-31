@@ -6,6 +6,7 @@
 
 LOG_TAG("HTRecorderComponent");
 
+namespace ws {
 namespace Key {
 constexpr static auto MaxRecordCount = "maxRecordCount";
 constexpr static auto Period = "period";
@@ -142,4 +143,5 @@ void HTRecorderComponent::getRecords(Request &req) const {
 
     // note: the json is being sent in 512-byte chunks
     writeJson(req, json, 512);
+}
 }

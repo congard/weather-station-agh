@@ -3,6 +3,7 @@
 
 #include <ctime>
 
+namespace ws {
 /**
  * Stands for Humidity Temperature Record
  *
@@ -33,5 +34,6 @@ private:
     uint8_t m_floatParts;
     uint32_t m_timestamp;
 };
+}
 
 #endif //WEATHERSTATION_HTRECORD_H

@@ -5,6 +5,7 @@
 
 #define TAG "Display"
 
+namespace ws {
 Display::Display(Application &application)
     : m_application(application),
       m_renderer(),
@@ -85,4 +86,5 @@ void Display::onRun() {
         m_renderer->render();
         vTaskDelay(pdMS_TO_TICKS(m_refreshPeriod));
     }
+}
 }

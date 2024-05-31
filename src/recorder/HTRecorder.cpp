@@ -7,6 +7,7 @@ constexpr static auto TAG = "HTRecorder";
 
 #define LOG(...) ESP_LOGI(TAG, __VA_ARGS__)
 
+namespace ws {
 HTRecorder::HTRecorder(DHT22Sensor &sensor)
     : m_sensor(sensor),
       m_records(256),
@@ -44,4 +45,5 @@ void HTRecorder::onRun() {
 
         Application::sleep(m_periodSec * 1000);
     }
+}
 }

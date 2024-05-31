@@ -5,6 +5,7 @@
 
 LOG_TAG("ApplicationComponent");
 
+namespace ws {
 namespace Key {
 constexpr static auto Time = "time";
 constexpr static auto Uptime = "time";
@@ -47,4 +48,5 @@ void ApplicationComponent::setTime(Request &req) {
             writeJson(req, resp);
         }
     });
+}
 }

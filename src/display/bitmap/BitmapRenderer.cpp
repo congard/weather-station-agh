@@ -1,5 +1,6 @@
 #include "BitmapRenderer.h"
 
+namespace ws {
 BitmapRenderer::BitmapRenderer(BitmapView base)
     : m_base(base) {}
 
@@ -124,4 +125,5 @@ void BitmapRenderer::drawText(std::string_view text, int x, int y, const Font &f
 
         posX += w;
     }
+}
 }

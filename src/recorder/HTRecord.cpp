@@ -2,6 +2,7 @@
 
 #include <cmath>
 
+namespace ws {
 HTRecord::HTRecord(float humidity, float temp, uint32_t timestamp)
     : m_humidity(static_cast<int8_t>(humidity)),
       m_temp(static_cast<int8_t>(temp)),
@@ -32,4 +33,5 @@ float HTRecord::getTemperature() const {
 
 uint32_t HTRecord::getTimestamp() const {
     return m_timestamp;
+}
 }

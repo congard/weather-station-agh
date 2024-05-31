@@ -5,6 +5,7 @@
 
 #include <tulz/util/noncopyable.h>
 
+namespace ws {
 class Application;
 
 /**
@@ -19,5 +20,6 @@ public:
 private:
     RESTServer m_server;
 };
+}
 
 #endif //WEATHERSTATION_RESTMODULE_H

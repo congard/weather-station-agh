@@ -4,6 +4,7 @@
 #include "sensor/DHT22Sensor.h"
 #include "recorder/HTRecorder.h"
 
+namespace ws {
 class HTModule {
 public:
     HTModule();
@@ -17,5 +18,6 @@ private:
     DHT22Sensor m_sensor;
     HTRecorder m_recorder;
 };
+}
 
 #endif //WEATHERSTATION_HTMODULE_H

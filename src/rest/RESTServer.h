@@ -7,6 +7,7 @@
 #include <vector>
 #include <expressif/http/server/HTTPServer.h>
 
+namespace ws {
 class RESTServer {
 public:
     explicit RESTServer(NetworkManager &network);
@@ -31,5 +32,6 @@ private:
     expressif::http::server::HTTPServer m_server;
     std::vector<RESTComponentPtr> m_components;
 };
+}
 
 #endif //WEATHERSTATION_RESTSERVER_H

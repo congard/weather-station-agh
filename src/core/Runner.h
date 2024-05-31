@@ -6,6 +6,7 @@
 
 #include <string>
 
+namespace ws {
 class Runner {
 public:
     struct Config {
@@ -33,5 +34,6 @@ private:
 private:
     TaskHandle_t m_taskHandle;
 };
+}
 
 #endif //WEATHERSTATION_RUNNER_H

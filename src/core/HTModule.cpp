@@ -1,5 +1,6 @@
 #include "HTModule.h"
 
+namespace ws {
 HTModule::HTModule()
     : m_recorder(m_sensor) {}
 
@@ -14,4 +15,5 @@ DHT22Sensor& HTModule::getSensor() {
 
 HTRecorder& HTModule::getRecorder() {
     return m_recorder;
+}
 }

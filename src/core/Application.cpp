@@ -2,6 +2,7 @@
 
 #include "Application.h"
 
+namespace ws {
 Application::Application()
     : m_display(*this),
       m_restModule(*this) {}
@@ -70,4 +71,5 @@ uint64_t Application::getUptime() {
 
 void Application::sleep(int ms) {
     vTaskDelay(pdMS_TO_TICKS(ms));
+}
 }

@@ -6,6 +6,7 @@ constexpr static auto TAG = "RESTServer";
 
 #define LOG(...) ESP_LOGI(TAG, __VA_ARGS__)
 
+namespace ws {
 RESTServer::RESTServer(NetworkManager &network) {
     network.addOnConnectedHandler([this] {
         if (!isValid()) {
@@ -37,4 +38,5 @@ bool RESTServer::isValid() const {
 void RESTServer::addComponent(RESTComponentPtr component) {
     component->enableFor(*this);
     m_components.emplace_back(std::move(component));
+}
 }

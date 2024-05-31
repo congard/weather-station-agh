@@ -3,6 +3,7 @@
 
 #include "rest/RESTComponent.h"
 
+namespace ws {
 class HTRecorder;
 
 class HTRecorderComponent : public RESTComponent {
@@ -19,5 +20,6 @@ private:
 private:
     HTRecorder &m_recorder;
 };
+}
 
 #endif //WEATHERSTATION_HTRECORDERCOMPONENT_H

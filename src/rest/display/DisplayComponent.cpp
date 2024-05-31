@@ -6,6 +6,7 @@
 
 LOG_TAG("DisplayComponent");
 
+namespace ws {
 namespace Key {
 constexpr static auto RefreshPeriod = "refreshPeriod";
 constexpr static auto Renderer = "renderer";
@@ -77,4 +78,5 @@ void DisplayComponent::getRenderers(Request &req) {
     renderers.add("default");
     renderers.add("big");
     writeJson(req, json);
+}
 }

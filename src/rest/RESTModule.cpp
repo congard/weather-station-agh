@@ -8,6 +8,7 @@
 #include "sensor/DHT22SensorComponent.h"
 #include "www/WWWComponent.h"
 
+namespace ws {
 RESTModule::RESTModule(Application &application)
     : m_server(application.getNetworkManager())
 {
@@ -21,4 +22,5 @@ RESTModule::RESTModule(Application &application)
 
 void RESTModule::run() {
     m_server.start();
+}
 }

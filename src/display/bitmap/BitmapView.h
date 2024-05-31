@@ -3,6 +3,7 @@
 
 #include <cstdint>
 
+namespace ws {
 class BitmapView {
 public:
     inline BitmapView(uint8_t *bitmap, int16_t width, int16_t height)
@@ -35,5 +36,6 @@ private:
     int16_t m_width;
     int16_t m_height;
 };
+}
 
 #endif //WEATHERSTATION_BITMAPVIEW_H

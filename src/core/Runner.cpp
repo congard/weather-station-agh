@@ -1,7 +1,6 @@
 #include "Runner.h"
 
-#define TAG "Runner"
-
+namespace ws {
 Runner::Runner()
     : m_taskHandle() {}
 
@@ -40,4 +39,5 @@ void Runner::onRun(void *pvParameters) {
     auto instance = static_cast<Runner*>(pvParameters);
     instance->onRun();
     instance->destroy();
+}
 }

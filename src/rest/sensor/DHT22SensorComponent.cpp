@@ -8,6 +8,7 @@
 
 LOG_TAG("DHT22SensorComponent");
 
+namespace ws {
 DHT22SensorComponent::DHT22SensorComponent(DHT22Sensor &sensor)
     : m_sensor(sensor) {}
 
@@ -41,4 +42,5 @@ void DHT22SensorComponent::post(Request &req) {
             writeError(req, "Only 1 parameter is acceptable: updateFrequency");
         }
     });
+}
 }

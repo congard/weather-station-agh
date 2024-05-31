@@ -3,6 +3,7 @@
 
 #include "rest/RESTComponent.h"
 
+namespace ws {
 class ApplicationComponent : public RESTComponent {
 public:
     ApplicationComponent();
@@ -14,5 +15,6 @@ private:
     static void getTime(Request &req);
     static void setTime(Request &req);
 };
+}
 
 #endif //WEATHERSTATION_APPLICATIONCOMPONENT_H

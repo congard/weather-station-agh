@@ -11,6 +11,7 @@
 #define APP_WIFI_PASSWORD ""
 #endif
 
+namespace ws {
 inline static auto configureWifi() {
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_netif_init());
@@ -40,4 +41,5 @@ void NetworkManager::addOnConnectedHandler(const expressif::wifi::WiFi::Handler<
 
 void NetworkManager::addOnDisconnectedHandler(const expressif::wifi::WiFi::Handler<> &handler) {
     m_wifi->addOnDisconnectedHandler(handler);
+}
 }

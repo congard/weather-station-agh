@@ -8,6 +8,7 @@
 #include "rest/RESTModule.h"
 #include "HTModule.h"
 
+namespace ws {
 class Application : tulz::noncopyable {
 public:
     Application();
@@ -34,11 +35,12 @@ public:
     static void sleep(int ms);
 
 private:
-    ws::PartitionManager m_partitionManager;
+    PartitionManager m_partitionManager;
     HTModule m_htModule;
     Display m_display;
     NetworkManager m_network;
     RESTModule m_restModule;
 };
+}
 
 #endif //WEATHERSTATION_APPLICATION_H

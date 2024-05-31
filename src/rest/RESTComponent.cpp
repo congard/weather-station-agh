@@ -5,6 +5,7 @@ LOG_TAG("RESTComponent");
 
 using namespace expressif::http::server;
 
+namespace ws {
 void RESTComponent::writeJson(Request &req, const JsonDocument &json, size_t chunkSize) {
     std::string jsonStr;
     serializeJson(json, jsonStr);
@@ -44,4 +45,5 @@ void RESTComponent::readJson(Request &req, const ReadCallback &readCallback) {
 
 void RESTComponent::log(std::string_view message) {
     LOGI("%s", message.data());
+}
 }

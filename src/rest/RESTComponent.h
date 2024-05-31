@@ -8,6 +8,7 @@
 #include <expressif/http/server/HTTPServer.h>
 #include <ArduinoJson.h>
 
+namespace ws {
 class Application;
 class RESTServer;
 
@@ -61,6 +62,7 @@ private:
 };
 
 using RESTComponentPtr = std::unique_ptr<RESTComponent>;
+}
 
 #define endpointHandler(handler) [this](Request &req) { handler(req); }
 

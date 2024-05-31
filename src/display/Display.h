@@ -8,6 +8,7 @@
 #include <memory>
 #include <tulz/util/noncopyable.h>
 
+namespace ws {
 class Application;
 
 class Display : public Runner, tulz::noncopyable {
@@ -48,5 +49,6 @@ private:
     SSD1306_t m_dev;
     int m_refreshPeriod;
 };
+}
 
 #endif //WEATHERSTATION_DISPLAY_H

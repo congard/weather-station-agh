@@ -3,6 +3,7 @@
 
 #include <cstdint>
 
+namespace ws {
 class Font {
 public:
     virtual ~Font() = default;
@@ -15,5 +16,6 @@ public:
         return getChar(c);
     }
 };
+}
 
 #endif //WEATHERSTATION_FONT_H

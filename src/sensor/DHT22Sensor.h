@@ -9,6 +9,7 @@
 #include <atomic>
 #include <limits>
 
+namespace ws {
 class DHT22Sensor : public TemperatureSensor, public HumiditySensor, public Runner {
     // isTempChanged, isHumidityChanged
     using UpdateSubject_t = tulz::Subject<bool, bool>;
@@ -49,5 +50,6 @@ private:
     std::atomic<float> m_celsius;
     std::atomic<float> m_humidity;
 };
+}
 
 #endif //WEATHERSTATION_DHT22SENSOR_H

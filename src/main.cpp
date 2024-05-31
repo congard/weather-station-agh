@@ -1,6 +1,6 @@
 #include "core/Application.h"
 
 extern "C" void app_main() {
-    Application app;
+    ws::Application app;
     app.exec();
 }

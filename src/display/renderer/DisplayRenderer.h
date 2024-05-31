@@ -4,6 +4,7 @@
 #include <string>
 #include <tulz/util/noncopyable.h>
 
+namespace ws {
 class Display;
 
 class DisplayRenderer : tulz::noncopyable {
@@ -16,5 +17,6 @@ public:
 protected:
     Display &m_display;
 };
+}
 
 #endif //WEATHERSTATION_DISPLAYRENDERER_H

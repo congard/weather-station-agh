@@ -3,6 +3,7 @@
 
 #include "rest/RESTComponent.h"
 
+namespace ws {
 class DHT22Sensor;
 
 class DHT22SensorComponent : public RESTComponent {
@@ -18,5 +19,6 @@ private:
 private:
     DHT22Sensor &m_sensor;
 };
+}
 
 #endif //WEATHERSTATION_DHT22SENSORCOMPONENT_H

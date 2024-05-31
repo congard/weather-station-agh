@@ -3,6 +3,7 @@
 
 #include "rest/RESTComponent.h"
 
+namespace ws {
 /**
  * Handles non-api endpoints and returns the corresponding files, e.g.
  * <br>GET /index.html
@@ -20,5 +21,6 @@ public:
 private:
     static void get(Request &req);
 };
+}
 
 #endif //WEATHERSTATION_WWWCOMPONENT_H

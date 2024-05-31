@@ -3,6 +3,7 @@
 
 #include "rest/RESTComponent.h"
 
+namespace ws {
 class Display;
 
 class DisplayComponent : public RESTComponent {
@@ -24,5 +25,6 @@ private:
 private:
     Display &m_display;
 };
+}
 
 #endif //WEATHERSTATION_DISPLAYCOMPONENT_H
