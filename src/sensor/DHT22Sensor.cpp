@@ -5,18 +5,13 @@
 
 #define TAG "DHT22Sensor"
 
-// according to the datasheet, the sensing period
-// is equal to approx. 2 seconds
-// https://www.sparkfun.com/datasheets/Sensors/Temperature/DHT22.pdf
-constexpr int minUpdateFreq = 2000;
-
 DHT22Sensor::DHT22Sensor()
-    : m_updateFreq(minUpdateFreq),
+    : m_updateFreq(MinUpdateFreq),
       m_celsius(None),
       m_humidity(None) {}
 
 void DHT22Sensor::setUpdateFrequency(int ms) {
-    m_updateFreq = std::max(ms, minUpdateFreq);
+    m_updateFreq = std::max(ms, MinUpdateFreq);
 }
 
 int DHT22Sensor::getUpdateFrequency() const {

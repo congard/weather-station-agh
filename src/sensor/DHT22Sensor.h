@@ -16,6 +16,11 @@ class DHT22Sensor : public TemperatureSensor, public HumiditySensor, public Runn
 public:
     constexpr static auto None {std::numeric_limits<float>::infinity()};
 
+    // according to the datasheet, the sensing period
+    // is equal to approx 2 seconds
+    // https://www.sparkfun.com/datasheets/Sensors/Temperature/DHT22.pdf
+    constexpr static auto MinUpdateFreq {2000};
+
 public:
     DHT22Sensor();
 
