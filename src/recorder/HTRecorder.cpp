@@ -17,7 +17,7 @@ void HTRecorder::setMaxRecordCount(int count) {
 }
 
 void HTRecorder::setPeriod(int sec) {
-    m_periodSec = sec;
+    m_periodSec = std::max(sec, DHT22Sensor::MinUpdateFreq / 1000);
 }
 
 int HTRecorder::getMaxRecordCount() const {
