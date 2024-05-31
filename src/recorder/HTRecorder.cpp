@@ -1,11 +1,8 @@
 #include "HTRecorder.h"
 #include "core/Application.h"
+#include "core/log.h"
 
-#include <esp_log.h>
-
-constexpr static auto TAG = "HTRecorder";
-
-#define LOG(...) ESP_LOGI(TAG, __VA_ARGS__)
+LOG_TAG("HTRecorder");
 
 namespace ws {
 HTRecorder::HTRecorder(DHT22Sensor &sensor)
@@ -30,7 +27,7 @@ int HTRecorder::getPeriod() const {
 }
 
 void HTRecorder::onRun() {
-    LOG("Recording has been started");
+    LOGI("Recording has been started");
 
     while (true) {
         auto humidity = m_sensor.getRelativeHumidity();
@@ -39,8 +36,8 @@ void HTRecorder::onRun() {
         if (humidity != DHT22Sensor::None && temp != DHT22Sensor::None) {
             std::lock_guard locker(m_mutex);
             auto &record = m_records.emplace_back(humidity, temp, Application::getUptime());
-            LOG("Data recorded: humidity=%.1f %%, temperature=%.1f °C, timestamp=%lu, record_count=%zu",
-                record.getHumidity(), record.getTemperature(), record.getTimestamp(), m_records.size());
+            LOGI("Data recorded: humidity=%.1f %%, temperature=%.1f °C, timestamp=%lu, record_count=%zu",
+                 record.getHumidity(), record.getTemperature(), record.getTimestamp(), m_records.size());
         }
 
         Application::sleep(m_periodSec * 1000);

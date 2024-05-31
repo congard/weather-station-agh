@@ -1,24 +1,21 @@
 #include "RESTServer.h"
+#include "core/log.h"
 
-#include <esp_log.h>
-
-constexpr static auto TAG = "RESTServer";
-
-#define LOG(...) ESP_LOGI(TAG, __VA_ARGS__)
+LOG_TAG("RESTServer");
 
 namespace ws {
 RESTServer::RESTServer(NetworkManager &network) {
     network.addOnConnectedHandler([this] {
         if (!isValid()) {
             ESP_ERROR_CHECK(m_server.start());
-            LOG("Server started");
+            LOGI("Server started");
         }
     });
 
     network.addOnDisconnectedHandler([this] {
         if (isValid()) {
             assert(m_server.stop());
-            LOG("Server stopped");
+            LOGI("Server stopped");
         }
     });
 }

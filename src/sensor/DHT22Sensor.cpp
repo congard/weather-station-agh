@@ -1,9 +1,10 @@
 #include "DHT22Sensor.h"
+#include "core/Application.h"
+#include "core/log.h"
 
 #include <am2302_rmt.h>
-#include <esp_log.h>
 
-#define TAG "DHT22Sensor"
+LOG_TAG("DHT22Sensor");
 
 namespace ws {
 DHT22Sensor::DHT22Sensor()
@@ -44,17 +45,17 @@ void DHT22Sensor::onRun() {
     am2302_handle_t sensor {};
     ESP_ERROR_CHECK(am2302_new_sensor_rmt(&am2302_config, &rmt_config, &sensor));
 
-    ESP_LOGI(TAG, "Sensor is ready");
+    LOGI("Sensor is ready");
 
     while (true) {
         // the delay between each sensor read is required by the data sheet
-        vTaskDelay(pdMS_TO_TICKS(m_updateFreq));
+        Application::sleep(m_updateFreq);
 
         float temperature;
         float humidity;
 
         ESP_ERROR_CHECK(am2302_read_temp_humi(sensor, &temperature, &humidity));
-        ESP_LOGI(TAG, "Temperature: %.1f °C, Humidity: %.1f %%", temperature, humidity);
+        LOGI("Temperature: %.1f °C, Humidity: %.1f %%", temperature, humidity);
 
         auto almostEquals = [](float f1, float f2, float eps = 0.05f) {
             return std::abs(f1 - f2) < eps;
