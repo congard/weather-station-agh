@@ -11,6 +11,7 @@ public:
     void run();
 
     DHT22Sensor& getSensor();
+    HTRecorder& getRecorder();
 
 private:
     DHT22Sensor m_sensor;
