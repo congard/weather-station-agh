@@ -30,6 +30,6 @@ float HTRecord::getTemperature() const {
     return i + f;
 }
 
-time_t HTRecord::getTimestamp() const {
+uint32_t HTRecord::getTimestamp() const {
     return m_timestamp;
 }

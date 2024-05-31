@@ -20,13 +20,18 @@ public:
 
     float getHumidity() const;
     float getTemperature() const;
-    time_t getTimestamp() const;
+
+    /**
+     * @return The time in ms counted from the device boot
+     * @note Overflows every ≈49 days
+     */
+    uint32_t getTimestamp() const;
 
 private:
     int8_t m_humidity;
     int8_t m_temp;
     uint8_t m_floatParts;
-    uint32_t m_timestamp; // in seconds from device boot
+    uint32_t m_timestamp;
 };
 
 #endif //WEATHERSTATION_HTRECORD_H

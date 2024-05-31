@@ -38,7 +38,7 @@ void HTRecorder::onRun() {
         if (humidity != DHT22Sensor::None && temp != DHT22Sensor::None) {
             std::lock_guard locker(m_mutex);
             auto &record = m_records.emplace_back(humidity, temp, Application::getUptime());
-            LOG("Data recorded: humidity=%.1f %%, temperature=%.1f °C, timestamp=%lli, record_count=%zu",
+            LOG("Data recorded: humidity=%.1f %%, temperature=%.1f °C, timestamp=%lu, record_count=%zu",
                 record.getHumidity(), record.getTemperature(), record.getTimestamp(), m_records.size());
         }
 
