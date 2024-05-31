@@ -13,8 +13,6 @@ public:
 
     virtual void render() = 0;
 
-    virtual std::string getName() = 0;
-
 protected:
     Display &m_display;
 };

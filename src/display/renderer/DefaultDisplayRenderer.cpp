@@ -67,7 +67,3 @@ void DefaultDisplayRenderer::render() {
         }
     }
 }
-
-std::string DefaultDisplayRenderer::getName() {
-    return "DefaultDisplayRenderer";
-}

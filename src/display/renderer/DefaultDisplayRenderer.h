@@ -9,8 +9,6 @@ public:
 
     void render() override;
 
-    std::string getName() override;
-
 private:
     bool m_tempRefreshRequired;
     bool m_humidityRefreshRequired;
