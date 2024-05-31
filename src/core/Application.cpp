@@ -6,8 +6,8 @@ Application::Application()
     : m_display(*this),
       m_restModule(*this) {}
 
-DHT22Sensor& Application::getDHT22Sensor() {
-    return m_htModule.getSensor();
+HTModule& Application::getHTModule() {
+    return m_htModule;
 }
 
 NetworkManager& Application::getNetworkManager() {

@@ -11,7 +11,7 @@ class Application : tulz::noncopyable {
 public:
     Application();
 
-    DHT22Sensor& getDHT22Sensor();
+    HTModule& getHTModule();
     NetworkManager& getNetworkManager();
 
     [[noreturn]] void exec();

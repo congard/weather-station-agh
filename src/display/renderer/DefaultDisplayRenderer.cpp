@@ -10,7 +10,7 @@ DefaultDisplayRenderer::DefaultDisplayRenderer(Display &parent)
       m_tempRefreshRequired(true),
       m_humidityRefreshRequired(true)
 {
-    auto &sensor = parent.getApplication().getDHT22Sensor();
+    auto &sensor = parent.getApplication().getHTModule().getSensor();
     sensor.addOnUpdateListener([this](bool isTempChanged, bool isHumidityChanged) {
         m_tempRefreshRequired = isTempChanged;
         m_humidityRefreshRequired = isHumidityChanged;
@@ -45,7 +45,7 @@ void DefaultDisplayRenderer::render() {
         uint8_t buffer[BitmapRenderer::getBufferSize(w, h)] = {0};
         BitmapRenderer renderer {BitmapView {buffer, w, h}};
         Font16x16 font;
-        auto &sensor = m_display.getApplication().getDHT22Sensor();
+        auto &sensor = m_display.getApplication().getHTModule().getSensor();
 
         auto showBitmap = [this, &renderer](int x, int y) {
             ssd1306_bitmaps(&m_display.getDev(), x, y, renderer.data(), renderer.width(), renderer.height(), false);
