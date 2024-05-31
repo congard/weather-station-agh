@@ -8,7 +8,8 @@
 Display::Display(Application &application)
     : m_application(application),
       m_renderer(),
-      m_dev() {}
+      m_dev(),
+      m_refreshPeriod(1000) {}
 
 void Display::setRenderer(DisplayRendererPtr renderer) {
     m_renderer = std::move(renderer);
@@ -16,6 +17,14 @@ void Display::setRenderer(DisplayRendererPtr renderer) {
 
 DisplayRenderer* Display::getRenderer() const {
     return m_renderer.get();
+}
+
+void Display::setRefreshPeriod(int ms) {
+    m_refreshPeriod = std::max(ms, MinRefreshPeriod);
+}
+
+int Display::getRefreshPeriod() const {
+    return m_refreshPeriod;
 }
 
 SSD1306_t& Display::getDev() {
@@ -72,10 +81,8 @@ void Display::onRun() {
     if (m_renderer == nullptr)
         m_renderer = std::make_unique<DefaultDisplayRenderer>(*this);
 
-    constexpr auto updateDelay = 1000;
-
     while (true) {
         m_renderer->render();
-        vTaskDelay(pdMS_TO_TICKS(updateDelay));
+        vTaskDelay(pdMS_TO_TICKS(m_refreshPeriod));
     }
 }

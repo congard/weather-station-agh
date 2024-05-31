@@ -14,11 +14,23 @@ class Display : public Runner, tulz::noncopyable {
 public:
     using DisplayRendererPtr = std::unique_ptr<DisplayRenderer>;
 
+    constexpr static auto MinRefreshPeriod = 1000;
+
 public:
     explicit Display(Application &application);
 
     void setRenderer(DisplayRendererPtr renderer);
     DisplayRenderer* getRenderer() const;
+
+    /**
+     * @param ms The refresh period in ms
+     */
+    void setRefreshPeriod(int ms);
+
+    /**
+     * @return The refresh period in ms
+     */
+    int getRefreshPeriod() const;
 
     SSD1306_t& getDev();
 
@@ -34,6 +46,7 @@ private:
     Application &m_application;
     DisplayRendererPtr m_renderer;
     SSD1306_t m_dev;
+    int m_refreshPeriod;
 };
 
 #endif //WEATHERSTATION_DISPLAY_H
