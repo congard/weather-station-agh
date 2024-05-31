@@ -14,9 +14,15 @@ public:
     HTModule& getHTModule();
     NetworkManager& getNetworkManager();
 
+    Display& getDisplay();
+
     [[noreturn]] void exec();
 
     static void setTime(time_t seconds);
+
+    /**
+     * @return The time since epoch, in seconds
+     */
     static time_t getTime();
 
     /**

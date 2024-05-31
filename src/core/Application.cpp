@@ -14,6 +14,10 @@ NetworkManager& Application::getNetworkManager() {
     return m_network;
 }
 
+Display& Application::getDisplay() {
+    return m_display;
+}
+
 void Application::exec() {
     m_restModule.run();
 
