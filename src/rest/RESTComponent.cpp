@@ -12,6 +12,7 @@ void RESTComponent::writeJson(Request &req, const JsonDocument &json, size_t chu
 
     auto resp = req.response();
     resp.setType("application/json");
+    resp.setHeader("Access-Control-Allow-Origin", "*");
     resp.write(jsonStr, chunkSize);
 
     LOGI("Response: %s", jsonStr.c_str());
